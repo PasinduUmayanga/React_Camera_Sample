@@ -101,7 +101,21 @@ const CameraApp: React.FC = () => {
     a.click();
     window.URL.revokeObjectURL(url);
   };
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const handleZoomIn = () => {
+    if (zoomLevel < 3) {
+      setZoomLevel(zoomLevel + 0.1);
+    }
+  };
 
+  const handleZoomOut = () => {
+    if (zoomLevel > 1) {
+      setZoomLevel(zoomLevel - 0.1);
+    }
+  };
+  const videoStyle = {
+    transform: `scale(${zoomLevel})`, // Apply the zoom using CSS transform
+  };
   return (
     <div>
       <video hidden id="videoElement" autoPlay playsInline></video>
@@ -109,6 +123,7 @@ const CameraApp: React.FC = () => {
       <div>
         <Webcam
           forceScreenshotSourceSize
+          style={videoStyle}
           audio={false}
           ref={webcamRef}
           videoConstraints={{
@@ -131,14 +146,26 @@ const CameraApp: React.FC = () => {
             />
           </div>
         )}
-        {isRecording ? (
-          <button onClick={handleStopRecording}>Stop Recording</button>
-        ) : (
-          <button onClick={handleStartRecording}>Start Recording</button>
-        )}
-        {recordedChunks.length > 0 && (
-          <button onClick={handleDownload}>Download Video</button>
-        )}
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <div>
+          {isRecording ? (
+            <button onClick={handleStopRecording}>Stop Recording</button>
+          ) : (
+            <button onClick={handleStartRecording}>Start Recording</button>
+          )}
+          {recordedChunks.length > 0 && (
+            <button onClick={handleDownload}>Download Video</button>
+          )}
+          <div>
+            <button onClick={handleZoomIn}>Zoom In</button>
+            <button onClick={handleZoomOut}>Zoom Out</button>
+          </div>
+        </div>
       </div>
     </div>
   );
