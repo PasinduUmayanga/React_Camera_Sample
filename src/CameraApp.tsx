@@ -1,7 +1,5 @@
-import React, { LegacyRef, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
-import RecordRTC from "recordrtc";
-import { json } from "stream/consumers";
 
 const CameraApp: React.FC = () => {
   const webcamRef = useRef<Webcam | null>(null);
@@ -85,10 +83,11 @@ const CameraApp: React.FC = () => {
   const [capturedImage, setCapturedImage] = useState(null);
 
   const captureImage = () => {
-    if (webcamRef == null || webcamRef == undefined) {
+    if (!webcamRef.current) {
       alert("Devices not found");
+      return;
     }
-    const imageSrc = webcamRef?.current?.getScreenshot();
+    const imageSrc = webcamRef.current.getScreenshot();
     setCapturedImage(imageSrc ? imageSrc : ({} as any));
   };
   const handleDownload = () => {
