@@ -1,0 +1,21 @@
+version: 1.0.{build}
+
+image: Visual Studio 2022
+
+environment:
+  nodejs_version: "18"
+  CI: true
+
+cache:
+  - '%APPDATA%\npm-cache'
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm config set cache "%APPDATA%\npm-cache" --global
+  - npm ci
+
+build_script:
+  - npm run build
+
+test_script:
+  - npm run test:ci
