@@ -1,6 +1,6 @@
 # React Camera Sample
 
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/PasinduUmayanga/React_Camera_Sample?svg=true)](https://ci.appveyor.com/project/PasinduUmayanga/React-Camera-Sample)
+[![Build status](https://ci.appveyor.com/api/projects/status/lu6v5qi4qfa03hev?svg=true)](https://ci.appveyor.com/project/Mahadenamuththa/react-camera-sample)
 ![React](https://img.shields.io/badge/react-18.2.0-61dafb?logo=react)
 ![TypeScript](https://img.shields.io/badge/typescript-4.9.5-3178c6?logo=typescript&logoColor=white)
 ![Create React App](https://img.shields.io/badge/react--scripts-5.0.1-09d3ac)
